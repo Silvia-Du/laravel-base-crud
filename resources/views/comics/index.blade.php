@@ -23,8 +23,8 @@
               <td>{{ $comic->title }}</td>
               <td>{{ $comic->type }}</td>
               <td>
-                <button type="button" class="btn btn-warning">Warning</button>
-                <button type="button" class="btn btn-light">Light</button>
+                <a href="{{ route('comics.show', $comic->id) }}" type="button" class="btn btn-warning">View More</a>
+                <a href="" type="button" class="btn btn-light">Edit</a>
               </td>
             </tr>
 
