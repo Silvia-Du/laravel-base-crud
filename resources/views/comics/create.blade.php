@@ -7,8 +7,8 @@
 
     <h1>Create page</h1>
 
-    <form action="{{ route('comics.store') }}" method="POST" @csrf>
-
+    <form action="{{ route('comics.store') }}" method="POST" >
+        @csrf
         <div class="mb-3">
           <label for="title" class="form-label">Comic Title</label>
           <input type="text" class="form-control" name="title" id="title" placeholder="Comic title" required>
@@ -23,7 +23,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </form>
 </div>
 
 
