@@ -16,7 +16,7 @@
                 <div class="mt-3">
 
                     <a href="{{ route('comics.index') }}" type="button" class="btn btn-warning">Back to list</a>
-                    <a href="" type="button" class="btn btn-light">Edit</a>
+                    <a href="{{ route('comics.edit', $selected_comic) }}" type="button" class="btn btn-light">Edit</a>
                 </div>
             </div>
         </div>

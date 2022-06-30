@@ -57,7 +57,10 @@ class ComicsController extends Controller
     public function show($id)
     {
         $selected_comic = Comic::find($id);
-        return view('comics.show', compact('selected_comic'));
+        if($selected_comic){
+            return view('comics.show', compact('selected_comic'));
+        }
+        abort(404, 'comic non trovato nell\'elenco');
     }
 
     /**
@@ -68,7 +71,11 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+        if($comic){
+            return view('comics.edit');
+        }
+        abort(404, 'comic non trovato nell\'elenco');
     }
 
     /**
