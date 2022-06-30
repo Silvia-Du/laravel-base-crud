@@ -40,7 +40,7 @@ class ComicsController extends Controller
         $data = $request->all();
 
         $new_comic = new Comic();
-        $data['slug'] = Str::slug($data['title'], '-');
+        $data['slug'] = $this->getSlug($data['title']);
         $new_comic->fill($data);
         $new_comic->save();
 
@@ -85,14 +85,13 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Comic $comic)
     {
-        //prendo il comic
-        $comic = Comic::find($id);
+
         //salvo i dati ricevuti in una var
         $data = $request->all();
         //creo lo slug
-        $data['slug'] = Str::slug($data['title'], '-');
+        $data['slug'] =$this->getSlug($data['title']);
         //sostituisco i nuovi data nel fumetto selezionato
         $comic->update($data);
 
@@ -105,11 +104,24 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
         //prendo il comic
-        $comic = Comic::find($id);
+        // $comic = Comic::find($id);
         $comic->delete();
         return redirect()->route('comics.index')->with('delete_product', "Comic: $comic->title è stato eliminato correttamente.");
+    }
+
+    private function getSlug($string){
+        $counter = 1;
+        $slug = Str::slug($string, '-');
+        $check_slug = Comic::where('slug', $slug)->first();
+
+        // if($check_slug){
+        //     $slug .= '-'. $counter;
+        //     $counter ++;
+        // }
+
+        return $slug;
     }
 }

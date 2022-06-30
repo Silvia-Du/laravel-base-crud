@@ -12,7 +12,7 @@
     @endif
 
 
-    <h1>Comics(index page)</h1>
+    <h1>Comics List</h1>
 
     <table class="table">
         <thead>
