@@ -110,6 +110,6 @@ class ComicsController extends Controller
         //prendo il comic
         $comic = Comic::find($id);
         $comic->delete();
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index')->with('delete_product', "Comic: $comic->title è stato eliminato correttamente.");
     }
 }
