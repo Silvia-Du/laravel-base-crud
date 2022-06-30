@@ -73,7 +73,7 @@ class ComicsController extends Controller
     {
         $comic = Comic::find($id);
         if($comic){
-            return view('comics.edit');
+            return view('comics.edit', compact('comic'));
         }
         abort(404, 'comic non trovato nell\'elenco');
     }
