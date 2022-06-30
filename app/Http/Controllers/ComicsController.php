@@ -87,7 +87,16 @@ class ComicsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //prendo il comic
+        $comic = Comic::find($id);
+        //salvo i dati ricevuti in una var
+        $data = $request->all();
+        //creo lo slug
+        $data['slug'] = Str::slug($data['title'], '-');
+        //sostituisco i nuovi data nel fumetto selezionato
+        $comic->update($data);
+
+        return redirect()->route('comics.show', $comic);
     }
 
     /**

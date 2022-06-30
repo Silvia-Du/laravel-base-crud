@@ -9,8 +9,9 @@
             </div>
 
             <div class="col-8 debug py-4">
-                <form action="{{ route('comics.index') }}" method="POST" >
+                <form action="{{ route('comics.update', $comic) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     {{-- titolo --}}
                     <div class="mb-3">
                       <label for="title" class="form-label">Title</label>
