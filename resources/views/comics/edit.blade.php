@@ -4,11 +4,11 @@
     <div class="container-fluid px-5 edit">
         <div class="row px-3">
             <h1 class="mb-5">Modifica di : {{ $comic->title }}</h1>
-            <div class="col-4 debug d-flex justify-content-center align-items-center">
+            <div class="col-4 debug d-flex justify-content-center align-items-center py-4">
                 <img src="{{ $comic->image }}" alt="{{ $comic->title }}">
             </div>
 
-            <div class="col-8 debug py-4">
+            <div class="col-8 debug py-4 debug">
                 <form action="{{ route('comics.update', $comic) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -28,7 +28,7 @@
                       <input type="text" class="form-control" name="type" id="type" value="{{ $comic->type }}" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Send data</button>
                 </form>
             </div>
         </div>
