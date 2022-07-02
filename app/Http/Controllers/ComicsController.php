@@ -117,10 +117,12 @@ class ComicsController extends Controller
         $slug = Str::slug($string, '-');
         $check_slug = Comic::where('slug', $slug)->first();
 
-        // if($check_slug){
-        //     $slug .= '-'. $counter;
-        //     $counter ++;
-        // }
+        while($check_slug){
+            $slug = Str::slug($string, '-');
+            $slug .= '-'. $counter;
+            $counter ++;
+            $check_slug = Comic::where('slug', $slug)->first();
+        }
 
         return $slug;
     }
