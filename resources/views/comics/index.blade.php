@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container index">
+<div class="container index py-5">
 
     @if (session('delete_product'))
 

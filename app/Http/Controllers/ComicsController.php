@@ -26,6 +26,7 @@ class ComicsController extends Controller
      */
     public function create()
     {
+
         return view('comics.create');
     }
 
@@ -37,6 +38,12 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate( [
+            'title'=>'required | max:50 | min:3',
+            'image'=> 'required | max:255 | min:10',
+            'type'=> 'required | max:50 | min:5'
+        ]
+        );
         $data = $request->all();
 
         $new_comic = new Comic();

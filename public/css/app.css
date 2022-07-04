@@ -11,6 +11,13 @@ header li {
 
 header li a {
   text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+header li a:hover,
+header li a.active {
+  color: white;
 }
 
 .index .btn {

@@ -4,6 +4,17 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->any())
+
+    <div class="alert-danger my-4 p-3 rounded-2">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+    </div>
+    @endif
 
     <h1>Create page</h1>
 
