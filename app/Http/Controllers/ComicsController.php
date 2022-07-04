@@ -42,6 +42,20 @@ class ComicsController extends Controller
             'title'=>'required | max:50 | min:3',
             'image'=> 'required | max:255 | min:10',
             'type'=> 'required | max:50 | min:5'
+        ],
+        [
+            'title.required' => 'Title è obbligatorio',
+            'title.max' => 'Title può avere massimo :max caratteri',
+            'title.min' => 'Title deve avere minimo :min caratteri',
+
+            'image.required' => 'Image è obbligatorio',
+            'image.max' => 'Image può avere massimo :max caratteri',
+            'image.min' => 'Image deve avere minimo :min caratteri',
+
+            'type.required' => 'Type è obbligatorio',
+            'type.max' => 'Type può avere massimo :max caratteri',
+            'type.min' => 'Type deve avere minimo :min caratteri',
+
         ]
         );
         $data = $request->all();
