@@ -14,34 +14,38 @@
 
     <h1>Comics List</h1>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">type</th>
-            <th scope="col">More info</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div class="container-fluid">
+        <div class="row flex-wrap">
+
             @foreach ($comics as $comic)
+            <div class="col-12 col-md-6 col-lg-4 mb-3 p-2">
+                <div class="box d-flex justify-content-center flex-column align-items-center py-3 text-center">
+                    <p class="_badge">{{ $comic->id }}</p>
+                    <img src="{{ $comic->image }}" alt="{{ $comic->title }}" class="img-fluid mb-3">
+                    <h5>Title: {{ $comic->title }}</h5>
+                    <h5>Type: {{ $comic->type }}</h5>
+                    <div class="py-2">
 
-            <tr>
-              <td>{{ $comic->id }}</td>
-              <td>{{ $comic->title }}</td>
-              <td>{{ $comic->type }}</td>
-              <td>
-                <a href="{{ route('comics.show', $comic) }}" type="button" class="btn btn-warning">View More</a>
-                <a href="{{ route('comics.edit', $comic) }}" type="button" class="btn btn-light">Edit</a>
-                <form class="d-inline" action="{{ route('comics.destroy', $comic) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler procedere conl\'eliminazione di {{ $comic->title }}?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-              </td>
-            </tr>
+                        <a href="{{ route('comics.show', $comic) }}" type="button" class="btn btn-primary">View More</a>
+                        <a href="{{ route('comics.edit', $comic) }}" type="button" class="btn btn-light">Edit</a>
+                        <form class="d-inline" action="{{ route('comics.destroy', $comic) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler procedere conl\'eliminazione di {{ $comic->title }}?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-dark">Delete</button>
+                        </form>
+                    </div>
+                </div>
 
+
+
+
+            </div>
             @endforeach
+
+        </div>
+    </div>
+
+
         </tbody>
       </table>
 </div>

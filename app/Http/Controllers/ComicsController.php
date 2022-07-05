@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Comic;
@@ -36,28 +37,8 @@ class ComicsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
-        $request->validate( [
-            'title'=>'required | max:50 | min:3',
-            'image'=> 'required | max:255 | min:10',
-            'type'=> 'required | max:50 | min:5'
-        ],
-        [
-            'title.required' => 'Title è obbligatorio',
-            'title.max' => 'Title può avere massimo :max caratteri',
-            'title.min' => 'Title deve avere minimo :min caratteri',
-
-            'image.required' => 'Image è obbligatorio',
-            'image.max' => 'Image può avere massimo :max caratteri',
-            'image.min' => 'Image deve avere minimo :min caratteri',
-
-            'type.required' => 'Type è obbligatorio',
-            'type.max' => 'Type può avere massimo :max caratteri',
-            'type.min' => 'Type deve avere minimo :min caratteri',
-
-        ]
-        );
         $data = $request->all();
 
         $new_comic = new Comic();
@@ -106,29 +87,8 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Comic $comic)
+    public function update(ComicRequest $request,Comic $comic)
     {
-        $request->validate(
-            [
-                'title'=>'required | max:50 | min:3',
-                'image'=> 'required | max:255 | min:10',
-                'type'=> 'required | max:50 | min:5'
-            ],
-            [
-                'title.required' => 'Title è obbligatorio',
-                'title.max' => 'Title può avere massimo :max caratteri',
-                'title.min' => 'Title deve avere minimo :min caratteri',
-
-                'image.required' => 'Image è obbligatorio',
-                'image.max' => 'Image può avere massimo :max caratteri',
-                'image.min' => 'Image deve avere minimo :min caratteri',
-
-                'type.required' => 'Type è obbligatorio',
-                'type.max' => 'Type può avere massimo :max caratteri',
-                'type.min' => 'Type deve avere minimo :min caratteri',
-
-            ]
-        );
 
         //salvo i dati ricevuti in una var
         $data = $request->all();

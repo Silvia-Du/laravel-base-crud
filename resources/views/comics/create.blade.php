@@ -3,10 +3,13 @@
 
 @section('content')
 
-<div class="container create">
-    @if ($errors->any())
 
+<div class="container create py-5">
+
+    {{-- data error messages --}}
+    @if ($errors->any())
     <div class="alert-danger my-4 p-3 rounded-2">
+
         <ul class="mb-0">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -16,7 +19,8 @@
     </div>
     @endif
 
-    <h1>Create page</h1>
+    {{-- form --}}
+    <h1 class="mb-4">Crea un nuovo articolo</h1>
 
     <form action="{{ route('comics.store') }}" method="POST" >
         @csrf
@@ -60,7 +64,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary my-3">Send data</button>
     </form>
 </div>
 
